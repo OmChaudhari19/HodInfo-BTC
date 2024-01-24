@@ -10,6 +10,13 @@ const Navbar = () => {
     const alternate = ['BTC', 'ETH', 'USDT', 'XRP', 'TRX', 'DASH', 'ZEC', 'XEM', 'IOST', 'WIN', 'BTT', 'WRX']
 
     const [selectedOption, setSelectedOption] = useState("btcinr");
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCount((prevCount) => (prevCount === 60 ? 1 : prevCount + 1));
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const fetch1 = async () => {
@@ -92,7 +99,7 @@ const Navbar = () => {
                         <button className='ml-10 mt-8 bg-gray-600 w-14 h-6 rounded-md'>BTC</button>
                     </div>
                 </div>
-                <div class=" w-20  rounded-full flex justify-center items-center border-white border-1 rounded-full text-cyan-500">
+                <div class=" flex justify-center items-center getouter text-cyan-500">
                     {count}
                 </div>
                 <div className='grow justify-center'>
